@@ -1,123 +1,118 @@
-import { Routes, Route, NavLink } from "react-router-dom";
-import { PageAboutUs } from "./PageAboutUs";
-import { PageKontakt } from "./PageKontakt";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { FaSpinner } from "react-icons/fa";
+import { AiOutlineMenu } from "react-icons/ai";
+import { ControlledCarousel } from "./carousel";
+import { BsFillCartPlusFill } from "react-icons/bs";
+import { useParams, NavLink } from "react-router-dom";
 
 const url = "http://makeup-api.herokuapp.com/api/v1/products.json";
 
 export const PageBrands = () => {
-  const [amount, setAmount] = useState(0);
+  const { id } = useParams();
   const [products, setProducts] = useState<any[]>([]);
-  //const [brands, setBrands] = useState<any[]>([]);
-  const [activeProduct, setActiveProduct] = useState<any>({});
+  const [brands, setBrands] = useState<string[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
 
-  const loadProducts = (_products: any[]) => {
-    let _filteredProducts: any = [];
-    const brands: any = [];
+  const loadBrands = (_products: any[]) => {
+    const _brands: string[] = [];
 
     _products.forEach((_product) => {
-      if (!brands.includes(_product.brand)) {
-        _filteredProducts.push(_product);
-        brands.push(_product.brand);
+      if (!_brands.includes(_product.brand)) {
+        _brands.push(_product.brand);
       }
     });
-    setProducts(_filteredProducts);
+    setBrands(_brands);
   };
 
   useEffect(() => {
     (async () => {
       const _products = (await axios.get(url)).data;
+      _products.forEach((product: any) => {
+        product.amount = 0;
+      });
+
       console.log(_products);
-      loadProducts(_products);
+      loadBrands(_products);
+      setProducts(_products);
     })();
   }, []);
 
   const handleAmountMinus = (product: any) => {
-    if (amount > 0 && product.id) {
-      setAmount(amount - 1);
+    product.amount--;
+    if (product.amount < 0) {
+      product.amount = 0;
     }
+    setProducts([...products]);
   };
+
+  const handleAmountPlus = (product: any) => {
+    product.amount++;
+    setProducts([...products]);
+  };
+
   const handleDropDownChoice = (e: any) => {
-    console.log(e.target.innerHTML);
     const brand = e.target.innerHTML;
-    const _activeProduct = products.find((m) => m.brand === brand);
-    setActiveProduct(_activeProduct);
-    console.log(_activeProduct);
+    const _filteredProducts = products.filter((m) => m.brand === brand);
+    setFilteredProducts(_filteredProducts);
+    console.log(brand);
   };
+
   return (
     <div className="pageBrands">
-      <div className="container">
-        <h2>There are {products.length}</h2>
-        <ul className="brands">
-          <DropdownButton id="dropdown-basic-button" title="MENU">
-            {products.length > 0 ? (
-              <>
-                {products.map((product: any, i: any) => {
-                  return (
-                    <Dropdown.Item
-                      value={product.brand}
-                      key={i}
-                      onClick={handleDropDownChoice}
-                    >
-                      {product.brand}
-                    </Dropdown.Item>
-                  );
-                })}
-              </>
-            ) : (
-              <div className="loading">
-                <FaSpinner className="spinner" />
-                <p>Loading products...</p>
-              </div>
-            )}
-          </DropdownButton>
-        </ul>
-
-        <div className="products">
-          {Object.keys(activeProduct).length > 0 && (
-            <div key={activeProduct.id} className="product">
-              <div>
-                <img src={activeProduct.image_link} />
-              </div>
-              <p>{activeProduct.name}</p>
-              <div className="buttons">
-                <button onClick={() => handleAmountMinus(activeProduct)}>
-                  -
-                </button>
-                {amount}
-                <button onClick={() => setAmount(amount + 1)}>+</button>
-              </div>
-              <span>{activeProduct.price} €</span>
-            </div>
-          )}
-
-          {Object.keys(activeProduct).length === 0 && (
+      <div className="brands">
+        <DropdownButton id="dropdown-basic-button" title={<AiOutlineMenu />}>
+          {brands.length > 0 ? (
             <>
-              {products.map((product) => {
+              {brands.map((brand: string, i: number) => {
                 return (
-                  <div key={product.id} className="product">
-                    <div>
-                      <img src={product.image_link} />
-                    </div>
-                    <p>{product.name}</p>
-                    <div className="buttons">
-                      <button onClick={() => handleAmountMinus(product)}>
-                        -
-                      </button>
-                      {amount}
-                      <button onClick={() => setAmount(amount + 1)}>+</button>
-                    </div>
-                    <span>{product.price} €</span>
-                  </div>
+                  <Dropdown.Item
+                    value={brand}
+                    key={i}
+                    onClick={handleDropDownChoice}
+                  >
+                    {brand}
+                  </Dropdown.Item>
                 );
               })}
             </>
+          ) : (
+            <div className="loading">
+              <FaSpinner className="spinner" />
+            </div>
           )}
-        </div>
+        </DropdownButton>
+      </div>
+      <div className="products">
+        {filteredProducts.length === 0 && <ControlledCarousel />}
+
+        {filteredProducts.length > 0 && (
+          <>
+            {filteredProducts.map((product, i) => {
+              return (
+                <div key={i} className="product">
+                  <div>
+                    <img src={product.image_link} className="productImg" />
+                  </div>
+                  <p>{product.name}</p>
+                  <div className="buttons">
+                    <button onClick={() => handleAmountMinus(product)}>
+                      -
+                    </button>
+                    {product.amount}
+                    <button onClick={() => handleAmountPlus(product)}>+</button>
+                  </div>
+                  <button className="cartPlusBtn">
+                    <BsFillCartPlusFill className="cartPlus" />
+                  </button>
+                  <span>{product.price} €</span>
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );
