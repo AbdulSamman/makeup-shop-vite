@@ -8,39 +8,31 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { FaSpinner } from "react-icons/fa";
 
 const url = "http://makeup-api.herokuapp.com/api/v1/products.json";
-//const productsUrl = `http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline`;
 
 export const PageBrands = () => {
   const [amount, setAmount] = useState(0);
   const [products, setProducts] = useState<any[]>([]);
-  const [brands, setBrands] = useState<any[]>([]);
-  const [activeBrand, setActiveBrand] = useState<any>({});
+  //const [brands, setBrands] = useState<any[]>([]);
+  const [activeProduct, setActiveProduct] = useState<any>({});
 
-  const getBrands = (products: any[]) => {
-    let brands: any = [];
-    products.forEach((product) => {
-      if (!brands.includes(product.brand)) {
-        brands.push(product.brand);
+  const loadProducts = (_products: any[]) => {
+    let _filteredProducts: any = [];
+    const brands: any = [];
+
+    _products.forEach((_product) => {
+      if (!brands.includes(_product.brand)) {
+        _filteredProducts.push(_product);
+        brands.push(_product.brand);
       }
     });
-    setBrands(brands);
-  };
-  const productsFilter = (products: any[], filter1: string) => {
-    let filteredProduct: any[] = [];
-    products.forEach((product) => {
-      if (product === filter1) {
-        filteredProduct.push(product);
-      }
-    });
-    setProducts(filteredProduct);
+    setProducts(_filteredProducts);
   };
 
   useEffect(() => {
     (async () => {
       const _products = (await axios.get(url)).data;
       console.log(_products);
-      getBrands(_products);
-      productsFilter(_products, activeBrand);
+      loadProducts(_products);
     })();
   }, []);
 
@@ -50,24 +42,28 @@ export const PageBrands = () => {
     }
   };
   const handleDropDownChoice = (e: any) => {
-    console.log(e);
+    console.log(e.target.innerHTML);
+    const brand = e.target.innerHTML;
+    const _activeProduct = products.find((m) => m.brand === brand);
+    setActiveProduct(_activeProduct);
+    console.log(_activeProduct);
   };
   return (
     <div className="pageBrands">
       <div className="container">
         <h2>There are {products.length}</h2>
         <ul className="brands">
-          <DropdownButton
-            id="dropdown-basic-button"
-            title="MENU"
-            onClick={handleDropDownChoice}
-          >
-            {brands.length > 0 ? (
+          <DropdownButton id="dropdown-basic-button" title="MENU">
+            {products.length > 0 ? (
               <>
-                {brands.map((brand: any, i: any) => {
+                {products.map((product: any, i: any) => {
                   return (
-                    <Dropdown.Item value={brand.brand} key={i}>
-                      {brand}
+                    <Dropdown.Item
+                      value={product.brand}
+                      key={i}
+                      onClick={handleDropDownChoice}
+                    >
+                      {product.brand}
                     </Dropdown.Item>
                   );
                 })}
@@ -82,22 +78,45 @@ export const PageBrands = () => {
         </ul>
 
         <div className="products">
-          {products.map((product) => {
-            return (
-              <div key={product.id} className="product">
-                <div>
-                  <img src={product.image_link} />
-                </div>
-                <p>{product.name}</p>
-                <div className="buttons">
-                  <button onClick={() => handleAmountMinus(product)}>-</button>
-                  {amount}
-                  <button onClick={() => setAmount(amount + 1)}>+</button>
-                </div>
-                <span>{product.price} €</span>
+          {Object.keys(activeProduct).length > 0 && (
+            <div key={activeProduct.id} className="product">
+              <div>
+                <img src={activeProduct.image_link} />
               </div>
-            );
-          })}
+              <p>{activeProduct.name}</p>
+              <div className="buttons">
+                <button onClick={() => handleAmountMinus(activeProduct)}>
+                  -
+                </button>
+                {amount}
+                <button onClick={() => setAmount(amount + 1)}>+</button>
+              </div>
+              <span>{activeProduct.price} €</span>
+            </div>
+          )}
+
+          {Object.keys(activeProduct).length === 0 && (
+            <>
+              {products.map((product) => {
+                return (
+                  <div key={product.id} className="product">
+                    <div>
+                      <img src={product.image_link} />
+                    </div>
+                    <p>{product.name}</p>
+                    <div className="buttons">
+                      <button onClick={() => handleAmountMinus(product)}>
+                        -
+                      </button>
+                      {amount}
+                      <button onClick={() => setAmount(amount + 1)}>+</button>
+                    </div>
+                    <span>{product.price} €</span>
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
     </div>
