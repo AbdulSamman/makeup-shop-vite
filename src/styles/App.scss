@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import "bootstrap/dist/css/bootstrap.min.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  div.App {
+    background-color: #eee;
+    color: #333;
+    font-family: sans-serif;
+    font-size: 65.2%;
+    header {
+      background-color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px 0 0;
+      a {
+        color: goldenrod;
+        text-decoration: none;
+
+        img {
+          position: relative;
+          box-shadow: inset 0.1em 0.1em 0.5em #aaa;
+          width: 100px;
+          aspect-ratio: 1;
+          border-radius: 100%;
+          border: 1px solid #eee;
+          animation: rolling 3s 1s linear infinite alternate;
+          &:hover {
+            background-color: #eee;
+            -webkit-animation-play-state: paused;
+            -moz-animation-play-state: paused;
+            -o-animation-play-state: paused;
+            animation-play-state: paused;
+          }
+        }
+      }
+    }
+
+    nav {
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      .us:hover {
+        transform: scale(1.3);
+      }
+      .cartIcon {
+        font-size: 1.5rem;
+      }
+      a {
+        margin-right: 1rem;
+        color: #666;
+        text-decoration: none;
+
+        &:hover {
+          transform: scale(1.1);
+          font-weight: bold;
+          color: #222;
+        }
+        &::first-letter {
+          font-size: 1.1rem;
+          vertical-align: -1px;
+        }
+      }
+      a.active {
+        color: rgb(211, 211, 110);
+      }
+    }
+
+    .pageStart {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      align-items: center;
+      padding: 0 0 1rem 0;
+      h2 {
+        margin-top: 2rem;
+        font-size: 3rem;
+        font-family: "Indie Flower", cursive;
+      }
+      p {
+        font-family: "Indie Flower", cursive;
+      }
+      .images {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 100px;
+        gap: 20px;
+        .gallery {
+          box-shadow: 0.1rem 0.1rem 2px 0.2rem;
+          &:hover {
+            transform: scale(1.03);
+            filter: brightness(90%);
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s;
+          }
+        }
+        .gallery__item--3 {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 1;
+          grid-row-end: 4;
+        }
+        .gallery__item--2 {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 4;
+          grid-row-end: 6;
+        }
+        .gallery__item--1 {
+          grid-column-start: 2;
+          grid-column-end: 3;
+          grid-row-start: 1;
+          grid-row-end: 6;
+        }
+        .gallery__item--4 {
+          grid-column-start: 3;
+          grid-column-end: 4;
+          grid-row-start: 1;
+          grid-row-end: 3;
+        }
+        .gallery__item--5 {
+          grid-column-start: 3;
+          grid-column-end: 4;
+          grid-row-start: 3;
+          grid-row-end: 6;
+        }
+      }
+    }
+
+    .pageBrands {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      background-color: #eee;
+    }
+    .container {
+      text-align: center;
+      h2 {
+        padding: 1rem 0;
+      }
+      .btn {
+        padding: 5px 3rem;
+      }
+      .dropdown-menu {
+        overflow-y: scroll;
+        height: 30vh;
+        text-transform: uppercase;
+      }
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        .product {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+          text-align: center;
+          width: 14rem;
+          border-radius: 0 0 1rem 1rem;
+          row-gap: 10px;
+          &:hover {
+            transform: scale(1.05);
+            transition: 0.5s;
+          }
+          div {
+            img {
+              width: 100%;
+            }
+          }
+          p {
+            padding: 1rem;
+            word-break: break-all;
+          }
+          span {
+            font-weight: bold;
+            color: rgb(247, 110, 133);
+            font-style: italic;
+            padding-bottom: 10px;
+            font-size: 1.2rem;
+          }
+        }
+        .buttons {
+          display: flex;
+          justify-content: center;
+          column-gap: 20px;
+          align-items: center;
+          font-size: 1.5rem;
+          button {
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            &:first-child {
+              color: red;
+            }
+            &:last-child {
+              color: green;
+            }
+            &:hover {
+              transform: scale(1.5);
+            }
+          }
+        }
+      }
+    }
+
+    .page404 {
+      code {
+        background-color: #777;
+        color: brown;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  @keyframes rolling {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(0.9);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  nav span {
+    display: none;
+  }
+}
