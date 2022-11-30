@@ -1,20 +1,19 @@
 import "./styles/App.scss";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import Flag from "react-flagkit";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { PageFrance } from "./components/PageFrance";
-import { PageSpain } from "./components/PageSpain";
-import { PageBrands } from "./components/PageBrands";
-import { PageStart } from "./components/PageStart";
-import { Page404 } from "./components/Page404";
-import { PageCart } from "./components/PageCart";
-import PageProduct from "./components/PageProduct";
-import { useState, useEffect } from "react";
-import axios from "axios";
-
-const url = "http://makeup-api.herokuapp.com/api/v1/products.json";
+import { PageFrance } from "./pages/PageFrance";
+import { PageSpain } from "./pages/PageSpain";
+import { PageBrands } from "./pages/PageBrands";
+import { PageStart } from "./pages/PageStart";
+import { Page404 } from "./pages/Page404";
+import { PageCart } from "./pages/PageCart";
+import PageProduct from "./pages/PageProduct";
+import { useContext } from "react";
+import { AppContext } from "./AppContext";
 
 function App() {
+  const { cart } = useContext(AppContext);
   //
   return (
     <div className="App">
@@ -24,15 +23,16 @@ function App() {
         </NavLink>
 
         <nav>
-          <NavLink to="brands">BANDS</NavLink>
+          <NavLink to="brands">BRANDS</NavLink>
           <span>|</span>
-          <NavLink to="france">KONTAKT</NavLink>
+          <NavLink to="contact">CONTACT</NavLink>
           <span>|</span>
           <NavLink to="spain">ABOUT US</NavLink>
           <span>|</span>
           <NavLink to="cart">
             <AiOutlineShoppingCart className="cartIcon" />
           </NavLink>
+          {cart.items.length}
           <div>
             <Flag country="US" className="us" />
           </div>
@@ -45,7 +45,7 @@ function App() {
           <Route path=":id" element={null} />
         </Route>
 
-        <Route path="france/*" element={<PageFrance />} />
+        <Route path="contact/*" element={<PageFrance />} />
         <Route path="cart" element={<PageCart />} />
         <Route path="spain" element={<PageSpain />} />
 

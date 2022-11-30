@@ -5,6 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #eee;
+}
 div.App {
   color: #333;
   font-family: sans-serif;
@@ -57,7 +60,6 @@ div.App {
     a {
       margin-right: 1rem;
       color: #666;
-      text-decoration: none;
 
       &:hover {
         transform: scale(1.1);
@@ -79,7 +81,7 @@ div.App {
     flex-direction: column;
     row-gap: 1rem;
     align-items: center;
-    padding-bottom: 4rem;
+    padding-bottom: 1rem;
     h2 {
       margin-top: 2rem;
       font-size: 3rem;
@@ -88,12 +90,14 @@ div.App {
     }
     p {
       font-family: "Indie Flower", cursive;
+      padding: 0 1rem;
     }
     .images {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: 100px;
       gap: 20px;
+      padding: 0 1rem;
       .gallery {
         box-shadow: 0.1rem 0.1rem 2px 0.2rem;
         &:hover {
@@ -141,9 +145,8 @@ div.App {
   }
 
   .pageBrands {
-    background-color: #eee;
     padding: 0.5rem;
-    padding-bottom: 3rem;
+
     .brands {
       .loading {
         text-align: center;
@@ -156,7 +159,7 @@ div.App {
         }
       }
       button {
-        background-color: #eee;
+        background-color: transparent;
         color: #333;
         border: none;
       }
@@ -190,114 +193,6 @@ div.App {
       }
     }
 
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 1rem;
-
-      .carousel-fade {
-        width: 100%;
-      }
-      .carousel-item {
-        h3,
-        p {
-          color: #aaa;
-          font-family: "Indie Flower", cursive;
-          font-size: 4rem;
-          font-weight: bold;
-          font-size: 72px;
-          background: linear-gradient(to right, #fff 20%, #111 40%, #111 60%, #fff 80%);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: shine 4s linear infinite alternate;
-        }
-        p {
-          font-size: 2rem;
-        }
-        img {
-          width: 100%;
-          height: 700px;
-          object-fit: cover;
-          border-radius: 5px;
-        }
-      }
-      .product {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-        text-align: center;
-        width: 14rem;
-        border-radius: 10px 10px 1rem 1rem;
-        row-gap: 5px;
-        background-color: #fff;
-        &:hover {
-          transform: scale(1.05);
-          transition: 0.5s;
-        }
-        div {
-          .productImg {
-            border-radius: 10px 10px 0 0;
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: contain;
-          }
-        }
-        p {
-          padding: 0.5rem;
-          word-break: break-all;
-        }
-        span {
-          font-weight: bold;
-          color: rgb(247, 110, 133);
-          font-style: italic;
-          padding-bottom: 10px;
-          font-size: 1.2rem;
-        }
-        .cartPlusBtn {
-          background-color: transparent;
-          border: none;
-          width: fit-content;
-          margin: 0 auto;
-          .cartPlus {
-            font-size: 1.5rem;
-            color: green;
-
-            &:hover {
-              transform: scale(1.1);
-              font-weight: bold;
-            }
-          }
-        }
-      }
-      .buttons {
-        display: flex;
-        justify-content: center;
-        column-gap: 20px;
-        align-items: center;
-        font-size: 1.5rem;
-        height: 30px;
-        button {
-          font-size: 1.5rem;
-          border: none;
-          cursor: pointer;
-          font-weight: bold;
-          background-color: transparent;
-          &:first-child {
-            color: red;
-          }
-          &:last-child {
-            color: green;
-          }
-          &:hover {
-            transform: scale(1.5);
-          }
-        }
-      }
-    }
-
     .page404 {
       code {
         background-color: #777;
@@ -308,6 +203,7 @@ div.App {
       }
     }
   }
+
   @keyframes rolling {
     from {
       transform: scale(0.5);
@@ -340,6 +236,9 @@ div.App {
           content: "";
         }
       }
+    }
+    .pageStart {
+      text-align: center;
     }
   }
 }

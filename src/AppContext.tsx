@@ -21,6 +21,7 @@ export const AppProvider: React.FC<any> = ({ children }) => {
   const [products, setProducts] = useState<any[]>([]);
   const [brands, setBrands] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+  const [cart, setCart] = useState<any>({ items: [] });
 
   const loadBrands = (_products: any[]) => {
     const _brands: string[] = [];
@@ -46,6 +47,32 @@ export const AppProvider: React.FC<any> = ({ children }) => {
     })();
   }, []);
 
+  const handleAmountMinus = (product: any) => {
+    product.amount--;
+    if (product.amount < 0) {
+      product.amount = 0;
+    }
+    setProducts([...products]);
+  };
+
+  const handleAmountPlus = (product: any) => {
+    product.amount++;
+    setProducts([...products]);
+  };
+
+  const handleDropDownChoice = (e: any) => {
+    const brand = e.target.innerHTML;
+    const _filteredProducts: any = products.filter(
+      (m: any) => m.brand === brand
+    );
+    setFilteredProducts(_filteredProducts);
+  };
+
+  const addToCart = (product: any, e: any) => {
+    cart.items.push(product);
+    setCart({ ...cart });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -54,6 +81,11 @@ export const AppProvider: React.FC<any> = ({ children }) => {
         filteredProducts,
         setProducts,
         setFilteredProducts,
+        addToCart,
+        cart,
+        handleAmountMinus,
+        handleAmountPlus,
+        handleDropDownChoice,
       }}
     >
       {children}
