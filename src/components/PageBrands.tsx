@@ -1,42 +1,20 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { FaSpinner } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { ControlledCarousel } from "./carousel";
 import { BsFillCartPlusFill } from "react-icons/bs";
-
-const url = "http://makeup-api.herokuapp.com/api/v1/products.json";
+import { useContext } from "react";
+import { AppContext } from "../AppContext";
 
 export const PageBrands = () => {
-  const [products, setProducts] = useState<any[]>([]);
-  const [brands, setBrands] = useState<string[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
-
-  const loadBrands = (_products: any[]) => {
-    const _brands: string[] = [];
-
-    _products.forEach((_product) => {
-      if (!_brands.includes(_product.brand)) {
-        _brands.push(_product.brand);
-      }
-    });
-    setBrands(_brands);
-  };
-
-  useEffect(() => {
-    (async () => {
-      const _products = (await axios.get(url)).data;
-      _products.forEach((product: any) => {
-        product.amount = 0;
-      });
-
-      console.log(_products);
-      loadBrands(_products);
-      setProducts(_products);
-    })();
-  }, []);
+  const {
+    products,
+    brands,
+    filteredProducts,
+    setFilteredProducts,
+    setProducts,
+  } = useContext(AppContext);
 
   const handleAmountMinus = (product: any) => {
     product.amount--;
@@ -53,7 +31,9 @@ export const PageBrands = () => {
 
   const handleDropDownChoice = (e: any) => {
     const brand = e.target.innerHTML;
-    const _filteredProducts: any = products.filter((m) => m.brand === brand);
+    const _filteredProducts: any = products.filter(
+      (m: any) => m.brand === brand
+    );
     setFilteredProducts(_filteredProducts);
   };
 
@@ -87,7 +67,7 @@ export const PageBrands = () => {
 
         {filteredProducts.length > 0 && (
           <>
-            {filteredProducts.map((product, i) => {
+            {filteredProducts.map((product: any, i: number) => {
               return (
                 <div key={i} className="product">
                   <div>

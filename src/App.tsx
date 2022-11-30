@@ -9,7 +9,13 @@ import { PageStart } from "./components/PageStart";
 import { Page404 } from "./components/Page404";
 import { PageCart } from "./components/PageCart";
 import PageProduct from "./components/PageProduct";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const url = "http://makeup-api.herokuapp.com/api/v1/products.json";
+
 function App() {
+  //
   return (
     <div className="App">
       <header>
@@ -34,6 +40,10 @@ function App() {
       </header>
       <Routes>
         <Route path="brands" element={<PageBrands />} />
+
+        <Route path="/product" element={<PageProduct />}>
+          <Route path=":id" element={null} />
+        </Route>
 
         <Route path="france/*" element={<PageFrance />} />
         <Route path="cart" element={<PageCart />} />
