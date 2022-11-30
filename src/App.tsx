@@ -7,8 +7,8 @@ import { PageSpain } from "./components/PageSpain";
 import { PageBrands } from "./components/PageBrands";
 import { PageStart } from "./components/PageStart";
 import { Page404 } from "./components/Page404";
-import { PageCity } from "./components/PageCity";
 import { PageCart } from "./components/PageCart";
+import PageProduct from "./components/PageProduct";
 function App() {
   return (
     <div className="App">
@@ -33,12 +33,12 @@ function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="brands/*" element={<PageBrands />} />
+        <Route path="brands" element={<PageBrands />} />
+
         <Route path="france/*" element={<PageFrance />} />
-        <Route path="cart/*" element={<PageCart />} />
-        <Route path="spain" element={<PageSpain />}>
-          <Route path=":id" element={<PageCity />} />
-        </Route>
+        <Route path="cart" element={<PageCart />} />
+        <Route path="spain" element={<PageSpain />} />
+
         <Route path="/" element={<PageStart />} />
         <Route path="*" element={<Page404 />} />
       </Routes>

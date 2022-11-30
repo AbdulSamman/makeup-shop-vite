@@ -6,12 +6,10 @@ import { FaSpinner } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { ControlledCarousel } from "./carousel";
 import { BsFillCartPlusFill } from "react-icons/bs";
-import { useParams, NavLink } from "react-router-dom";
 
 const url = "http://makeup-api.herokuapp.com/api/v1/products.json";
 
 export const PageBrands = () => {
-  const { id } = useParams();
   const [products, setProducts] = useState<any[]>([]);
   const [brands, setBrands] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
@@ -55,9 +53,8 @@ export const PageBrands = () => {
 
   const handleDropDownChoice = (e: any) => {
     const brand = e.target.innerHTML;
-    const _filteredProducts = products.filter((m) => m.brand === brand);
+    const _filteredProducts: any = products.filter((m) => m.brand === brand);
     setFilteredProducts(_filteredProducts);
-    console.log(brand);
   };
 
   return (

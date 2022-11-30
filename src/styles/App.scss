@@ -176,7 +176,7 @@ div.App {
         height: 15vh;
         background-color: rgba(0, 0, 0, 0.1);
         &::-webkit-scrollbar {
-          width: 10px; /* width of the entire scrollbar */
+          width: 10px;
         }
 
         &::-webkit-scrollbar-thumb {
@@ -204,7 +204,7 @@ div.App {
         p {
           color: #aaa;
           font-family: "Indie Flower", cursive;
-          font-size: 3rem;
+          font-size: 4rem;
           font-weight: bold;
           font-size: 72px;
           background: linear-gradient(to right, #fff 20%, #111 40%, #111 60%, #fff 80%);
