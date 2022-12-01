@@ -37,8 +37,7 @@ export const PageAboutUs = () => {
             can bring to ourselves is to take care of our skin.
             <br />
             That's why well-being for our products is the result of a holistic
-            Process that starts from the inside out with the dietary
-            <br />
+            Process that starts from the inside out with the <br /> dietary
             supplements and works externally with skin care, body care, and
             makeup.
           </p>
