@@ -45,7 +45,7 @@ div.App {
   }
 
   nav {
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -56,6 +56,22 @@ div.App {
     }
     .cartIcon {
       font-size: 1.5rem;
+    }
+    .cartLength {
+      position: absolute;
+      right: 7%;
+      top: 4%;
+      font-size: 0.8rem;
+      color: #fff;
+      background-color: rgb(252, 186, 6);
+      font-weight: bold;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     a {
       margin-right: 1rem;
@@ -91,6 +107,8 @@ div.App {
     p {
       font-family: "Indie Flower", cursive;
       padding: 0 1rem;
+      font-size: 1rem;
+      text-align: center;
     }
     .images {
       display: grid;
@@ -284,28 +302,6 @@ div.App {
     }
   }
 
-  @keyframes rolling {
-    from {
-      transform: scale(0.5);
-    }
-    to {
-      transform: scale(0.9);
-    }
-  }
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes shine {
-    to {
-      background-position: 200% center;
-    }
-  }
   //burger menu
   #hamburger-input {
     display: none;
@@ -335,19 +331,18 @@ div.App {
       #333 80%,
       #333 100%
     );
-  }
-
-  #hamburger-menu #sidebar-menu {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 200px;
-    height: 100%;
-    background-color: #ccc;
-    transition: 0.3s;
-    padding: 0px 10px;
-    box-sizing: border-box;
+    #sidebar-menu {
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 200px;
+      height: 100%;
+      background-color: #ccc;
+      transition: 0.3s;
+      padding: 0px 10px;
+      box-sizing: border-box;
+    }
   }
 
   #hamburger-menu h3 {
@@ -383,9 +378,33 @@ div.App {
     opacity: 0.4;
   }
   //ende burgermenu
-  @media (max-width: 767px) {
+
+  @keyframes rolling {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(0.9);
+    }
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  @media (max-width: 867px) {
     //burger menu
-    #main-menu:not(a.notHide) {
+    #main-menu {
       display: none;
     }
     #hamburger-menu {

@@ -31,11 +31,11 @@ function App() {
           <span>|</span>
           <NavLink to="aboutUs">ABOUT US</NavLink>
           <span>|</span>
-          <NavLink to="cart" id="notHide">
+          <NavLink to="cart" className="notHide">
             <AiOutlineShoppingCart className="cartIcon" />
           </NavLink>
-          {cart.items.length}
-          <div id="notHide">
+          <span className="cartLength">{cart.items.length}</span>
+          <div className="notHide">
             <Flag country="US" className="us" />
           </div>
         </nav>
