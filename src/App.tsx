@@ -3,7 +3,6 @@ import Flag from "react-flagkit";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Routes, Route, NavLink } from "react-router-dom";
 import { PageFrance } from "./pages/PageFrance";
-import { PageSpain } from "./pages/PageSpain";
 import { PageBrands } from "./pages/PageBrands";
 import { PageStart } from "./pages/PageStart";
 import { Page404 } from "./pages/Page404";
@@ -11,6 +10,7 @@ import { PageCart } from "./pages/PageCart";
 import PageProduct from "./pages/PageProduct";
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
+import { PageAboutUs } from "./pages/PageAboutUs";
 
 function App() {
   const { cart } = useContext(AppContext);
@@ -27,7 +27,7 @@ function App() {
           <span>|</span>
           <NavLink to="contact">CONTACT</NavLink>
           <span>|</span>
-          <NavLink to="spain">ABOUT US</NavLink>
+          <NavLink to="aboutUs">ABOUT US</NavLink>
           <span>|</span>
           <NavLink to="cart">
             <AiOutlineShoppingCart className="cartIcon" />
@@ -47,7 +47,7 @@ function App() {
 
         <Route path="contact/*" element={<PageFrance />} />
         <Route path="cart" element={<PageCart />} />
-        <Route path="spain" element={<PageSpain />} />
+        <Route path="aboutUs" element={<PageAboutUs />} />
 
         <Route path="/" element={<PageStart />} />
         <Route path="*" element={<Page404 />} />
