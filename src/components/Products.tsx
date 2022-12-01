@@ -1,5 +1,5 @@
 import { ControlledCarousel } from "./carousel";
-import { BsFillCartPlusFill } from "react-icons/bs";
+import { BsFillCartPlusFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../AppContext";
@@ -11,7 +11,7 @@ export const Products = () => {
 
   return (
     <div className="products">
-      {filteredProducts.length === 0 && <ControlledCarousel />}
+      {filteredProducts.length >= 0 && <ControlledCarousel />}
 
       {filteredProducts.length > 0 && (
         <>
@@ -42,6 +42,11 @@ export const Products = () => {
               </div>
             );
           })}
+          <div className="arrow">
+            <a href="#">
+              <BsFillArrowUpCircleFill className="arrowIcon" />
+            </a>
+          </div>
         </>
       )}
     </div>

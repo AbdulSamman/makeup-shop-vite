@@ -27,9 +27,30 @@
         }
         img {
             width: 100%;
-            height: 700px;
+            height: 400px;
             object-fit: cover;
             border-radius: 5px;
+        }
+    }
+    .arrow {
+        position: fixed;
+        display: flex;
+        left: 92%;
+        border-radius: 100%;
+        bottom: 0;
+        font-size: 3rem;
+
+        .arrowIcon {
+            color: #aaa;
+        }
+        &:hover {
+            color: #ffdffd;
+            transform: scale(1.1);
+        }
+    }
+    @media (max-width: 767px) {
+        .arrow {
+            left: 80%;
         }
     }
 }
