@@ -20,24 +20,25 @@ export const Products = () => {
               <div key={i} className="product">
                 <NavLink to={`/product/${product.id}`}>
                   <div>
-                    <img src={product.image_link} className="productImg" />
-                  </div>
-                  <p>{product.name}</p>
-                  <div className="buttons">
-                    <button onClick={() => handleAmountMinus(product)}>
-                      -
-                    </button>
-                    {product.amount}
-                    <button onClick={() => handleAmountPlus(product)}>+</button>
-                  </div>
-                  <button className="cartPlusBtn">
-                    <BsFillCartPlusFill
-                      className="cartPlus"
-                      onClick={addToCart}
+                    <img
+                      src={product.api_featured_image}
+                      className="productImg"
                     />
-                  </button>
-                  <span>{product.price} €</span>
+                  </div>
                 </NavLink>
+                <p>{product.name}</p>
+                <div className="buttons">
+                  <button onClick={() => handleAmountMinus(product)}>-</button>
+                  {product.amount}
+                  <button onClick={() => handleAmountPlus(product)}>+</button>
+                </div>
+                <button className="cartPlusBtn">
+                  <BsFillCartPlusFill
+                    className="cartPlus"
+                    onClick={addToCart}
+                  />
+                </button>
+                <span className="price">{product.price} €</span>
               </div>
             );
           })}

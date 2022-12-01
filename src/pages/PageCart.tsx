@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../AppContext";
-import "../styles/components/product.scss";
+import "../styles/components/products.scss";
 export const PageCart = () => {
   const { cart, handleAmountMinus, handleAmountPlus } = useContext(AppContext);
   return (

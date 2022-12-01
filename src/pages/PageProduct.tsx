@@ -15,19 +15,27 @@ export default function PageProduct() {
     <div className="pageProduct">
       {product ? (
         <div className="product">
-          <div>
-            <img src={product.image_link} className="productImg" />
+          <section>
+            <div>
+              <img src={product.api_featured_image} className="productImg" />
+            </div>
+            <div className="buttons">
+              <button onClick={() => handleAmountMinus(product)}>-</button>
+              {product.amount}
+              <button onClick={() => handleAmountPlus(product)}>+</button>
+            </div>
+          </section>
+          <div className="description">
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <div className="priceCart">
+              <button className="cartPlusBtn">
+                <BsFillCartPlusFill className="cartPlus" onClick={addToCart} />
+              </button>
+
+              <span className="price">{product.price} €</span>
+            </div>
           </div>
-          <p>{product.name}</p>
-          <div className="buttons">
-            <button onClick={() => handleAmountMinus(product)}>-</button>
-            {product.amount}
-            <button onClick={() => handleAmountPlus(product)}>+</button>
-          </div>
-          <button className="cartPlusBtn">
-            <BsFillCartPlusFill className="cartPlus" onClick={addToCart} />
-          </button>
-          <span>{product.price} €</span>
         </div>
       ) : (
         <p>You need to send a product id.</p>
