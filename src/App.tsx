@@ -11,6 +11,7 @@ import PageProduct from "./pages/PageProduct";
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
 import { PageAboutUs } from "./pages/PageAboutUs";
+import { PageContact } from "./pages/PageContact";
 
 function App() {
   const { cart } = useContext(AppContext);
@@ -31,11 +32,11 @@ function App() {
           <span>|</span>
           <NavLink to="aboutUs">ABOUT US</NavLink>
           <span>|</span>
-          <NavLink to="cart" className="notHide">
+          <NavLink to="cart">
             <AiOutlineShoppingCart className="cartIcon" />
           </NavLink>
           <span className="cartLength">{cart.items.length}</span>
-          <div className="notHide">
+          <div className="languageIcon">
             <Flag country="US" className="us" />
           </div>
         </nav>
@@ -47,7 +48,7 @@ function App() {
           <Route path=":id" element={null} />
         </Route>
 
-        <Route path="contact/*" element={<PageFrance />} />
+        <Route path="contact" element={<PageContact />} />
         <Route path="cart" element={<PageCart />} />
         <Route path="aboutUs" element={<PageAboutUs />} />
 

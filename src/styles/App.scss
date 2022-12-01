@@ -404,15 +404,13 @@ div.App {
 
   @media (max-width: 867px) {
     //burger menu
-    #main-menu {
+    #main-menu :not(:last-of-type) {
       display: none;
     }
     #hamburger-menu {
       display: inline;
     }
-    span {
-      display: none;
-    }
+
     .pageBrands {
       .brands {
         .btn::before {
@@ -422,6 +420,13 @@ div.App {
     }
     .pageStart {
       text-align: center;
+    }
+    nav {
+      justify-content: space-evenly;
+
+      .cartLength {
+        left: 58%;
+      }
     }
   }
 }
