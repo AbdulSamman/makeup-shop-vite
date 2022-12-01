@@ -7,15 +7,15 @@
 
     .carousel-fade {
         width: 100%;
+        z-index: 0;
     }
     .carousel-item {
         h3,
         p {
             color: #aaa;
             font-family: "Indie Flower", cursive;
-            font-size: 4rem;
             font-weight: bold;
-            font-size: 72px;
+            font-size: 80px;
             background: linear-gradient(to right, #fff 20%, #111 40%, #111 60%, #fff 80%);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -24,10 +24,11 @@
         }
         p {
             font-size: 2rem;
+            margin: 0;
         }
         img {
             width: 100%;
-            height: 400px;
+            height: 500px;
             object-fit: cover;
             border-radius: 5px;
         }

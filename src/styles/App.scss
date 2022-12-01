@@ -222,7 +222,6 @@ div.App {
   a {
     text-decoration: none;
   }
-
   .buttons {
     display: flex;
     justify-content: center;
@@ -307,8 +306,92 @@ div.App {
       background-position: 200% center;
     }
   }
+  //burger menu
+  #hamburger-input {
+    display: none;
+  }
+
+  #hamburger-menu {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Cabin", Sans-serif;
+    background: linear-gradient(
+      to bottom,
+      #333,
+      #333 20%,
+      rgba(255, 248, 248, 0) 20%,
+      rgba(245, 242, 242, 0.021) 40%,
+      #333 40%,
+      #333 60%,
+      rgba(255, 248, 248, 0) 60%,
+      rgba(245, 242, 242, 0.021) 80%,
+      #333 80%,
+      #333 100%
+    );
+  }
+
+  #hamburger-menu #sidebar-menu {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 200px;
+    height: 100%;
+    background-color: #ccc;
+    transition: 0.3s;
+    padding: 0px 10px;
+    box-sizing: border-box;
+  }
+
+  #hamburger-menu h3 {
+    color: #eee;
+    font-size: 2.2rem;
+  }
+
+  #hamburger-menu ul {
+    padding-left: 0px;
+  }
+
+  #hamburger-menu li {
+    list-style-type: none;
+    line-height: 3rem;
+  }
+
+  #hamburger-menu a {
+    color: #eee;
+    font-size: 1.3rem;
+    text-decoration: none;
+  }
+
+  #hamburger-menu a:hover {
+    text-decoration: underline;
+  }
+
+  #hamburger-input:checked + #hamburger-menu #sidebar-menu {
+    visibility: visible;
+    left: 0;
+  }
+  #hamburger-input:checked ~ .overlay {
+    visibility: visible;
+    opacity: 0.4;
+  }
+  //ende burgermenu
   @media (max-width: 767px) {
-    nav span {
+    //burger menu
+    #main-menu:not(a.notHide) {
+      display: none;
+    }
+    #hamburger-menu {
+      display: inline;
+    }
+    span {
       display: none;
     }
     .pageBrands {

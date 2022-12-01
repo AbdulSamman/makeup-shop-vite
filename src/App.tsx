@@ -22,18 +22,20 @@ function App() {
           <img src="/images/logo.png" className="moveX" />
         </NavLink>
 
-        <nav>
+        <nav id="main-menu">
+          <NavLink to="/">HOME</NavLink>
+          <span>|</span>
           <NavLink to="brands">BRANDS</NavLink>
           <span>|</span>
           <NavLink to="contact">CONTACT</NavLink>
           <span>|</span>
           <NavLink to="aboutUs">ABOUT US</NavLink>
           <span>|</span>
-          <NavLink to="cart">
+          <NavLink to="cart" id="notHide">
             <AiOutlineShoppingCart className="cartIcon" />
           </NavLink>
           {cart.items.length}
-          <div>
+          <div id="notHide">
             <Flag country="US" className="us" />
           </div>
         </nav>
@@ -52,6 +54,29 @@ function App() {
         <Route path="/" element={<PageStart />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
+      {/* burger menu */}
+      <input type="checkbox" id="hamburger-input" className="burger-shower" />
+      <label id="hamburger-menu" htmlFor="hamburger-input">
+        <nav id="sidebar-menu">
+          <h3>Menu</h3>
+          <ul>
+            <li>
+              <NavLink to="/">HOME</NavLink>
+            </li>
+            <li>
+              <NavLink to="brands">BRANDS</NavLink>
+            </li>
+            <li>
+              <NavLink to="contact">CONTACT</NavLink>
+            </li>
+            <li>
+              <NavLink to="aboutUs">ABOUT US</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </label>
+
+      <div className="overlay"></div>
     </div>
   );
 }

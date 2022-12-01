@@ -19,6 +19,7 @@ export default function PageProduct() {
             <div>
               <img src={product.api_featured_image} className="productImg" />
             </div>
+
             <div className="buttons">
               <button onClick={() => handleAmountMinus(product)}>-</button>
               {product.amount}
