@@ -6,7 +6,7 @@ import { PageBrands } from "./pages/PageBrands";
 import { PageStart } from "./pages/PageStart";
 import { Page404 } from "./pages/Page404";
 import { PageCart } from "./pages/PageCart";
-import PageProduct from "./pages/PageProduct";
+import { PageProduct } from "./pages/PageProduct";
 import { useContext } from "react";
 import { AppContext } from "./AppContext";
 import { PageAboutUs } from "./pages/PageAboutUs";

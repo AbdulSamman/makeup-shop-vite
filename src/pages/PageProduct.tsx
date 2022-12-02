@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../AppContext";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { RiArrowGoBackFill } from "react-icons/ri";
-export default function PageProduct() {
+export const PageProduct = () => {
   const navigate = useNavigate();
   const { products, handleAmountMinus, handleAmountPlus, addToCart } =
     useContext(AppContext);
@@ -47,4 +47,4 @@ export default function PageProduct() {
       )}
     </div>
   );
-}
+};

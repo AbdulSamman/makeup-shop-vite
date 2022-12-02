@@ -68,7 +68,7 @@ export const AppProvider: React.FC<any> = ({ children }) => {
     setFilteredProducts(_filteredProducts);
   };
 
-  const addToCart = (product: any, e: any) => {
+  const addToCart = (product: any) => {
     cart.items.push(product);
     setCart({ ...cart });
   };
