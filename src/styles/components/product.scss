@@ -14,6 +14,9 @@
             left: 20px;
             cursor: pointer;
             top: 10px;
+            &:hover {
+                transform: scale(1.1);
+            }
         }
         .productImg {
             width: 100%;
@@ -33,11 +36,14 @@
                     padding-bottom: 1rem;
                 }
             }
+            h3,
+            p {
+                text-align: center;
+            }
             p {
                 font-weight: bold;
                 word-break: break-all;
                 width: 80%;
-                text-align: center;
             }
         }
     }
