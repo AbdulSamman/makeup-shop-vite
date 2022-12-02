@@ -50,7 +50,9 @@ div.App {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-
+    .us {
+      margin-right: 1rem;
+    }
     .us:hover {
       transform: scale(1.3);
     }
@@ -59,7 +61,7 @@ div.App {
     }
     .cartLength {
       position: absolute;
-      right: 7%;
+      right: 8%;
       top: 4%;
       font-size: 0.8rem;
       color: #fff;
@@ -422,7 +424,7 @@ div.App {
       justify-content: space-evenly;
 
       .cartLength {
-        left: 58%;
+        left: 57%;
       }
     }
   }
