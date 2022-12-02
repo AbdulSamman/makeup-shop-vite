@@ -2,7 +2,6 @@ import "./styles/App.scss";
 import Flag from "react-flagkit";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { PageFrance } from "./pages/PageFrance";
 import { PageBrands } from "./pages/PageBrands";
 import { PageStart } from "./pages/PageStart";
 import { Page404 } from "./pages/Page404";
