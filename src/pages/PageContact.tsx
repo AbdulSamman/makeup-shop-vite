@@ -1,7 +1,11 @@
 export const PageContact = () => {
   return (
-    <>
-      <p>welcome to the Contact page</p>
-    </>
+    <form>
+      <fieldset>
+        <legend>New Product</legend>
+        <input type="text" />
+        <input type="text" />
+      </fieldset>
+    </form>
   );
 };

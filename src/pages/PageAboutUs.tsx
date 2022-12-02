@@ -29,7 +29,7 @@ export const PageAboutUs = () => {
           <img src="/images/aboutUs2.jpg" />
         </div>
         <div className="text">
-          <h4>Was wir tun</h4>
+          <h4>What we do</h4>
           <p>
             Your well-being is what interests us most.
             <br /> we want to be by your side to give you a daily dose of good
