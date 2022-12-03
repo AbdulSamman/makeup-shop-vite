@@ -182,6 +182,9 @@ div.App {
           transform: scale(1.05);
           transition: 0.5s;
         }
+        p {
+          height: 80px;
+        }
       }
       .loading {
         text-align: center;
