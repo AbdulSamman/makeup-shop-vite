@@ -1,6 +1,13 @@
 import "./styles/App.scss";
 import Flag from "react-flagkit";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineShoppingCart,
+  AiOutlineHome,
+  AiOutlineInfoCircle,
+  AiOutlineMessage,
+} from "react-icons/ai";
+import { MdProductionQuantityLimits } from "react-icons/md";
+
 import { Routes, Route, NavLink } from "react-router-dom";
 import { PageBrands } from "./pages/PageBrands";
 import { PageStart } from "./pages/PageStart";
@@ -61,16 +68,28 @@ function App() {
           <h3>Menu</h3>
           <ul>
             <li>
-              <NavLink to="/">HOME</NavLink>
+              <NavLink to="/">
+                <AiOutlineHome />
+                HOME
+              </NavLink>
             </li>
             <li>
-              <NavLink to="brands">BRANDS</NavLink>
+              <NavLink to="brands">
+                <MdProductionQuantityLimits />
+                BRANDS
+              </NavLink>
             </li>
             <li>
-              <NavLink to="contact">CONTACT</NavLink>
+              <NavLink to="contact">
+                <AiOutlineMessage className="contactIcon" />
+                CONTACT
+              </NavLink>
             </li>
             <li>
-              <NavLink to="aboutUs">ABOUT US</NavLink>
+              <NavLink to="aboutUs">
+                <AiOutlineInfoCircle />
+                ABOUT US
+              </NavLink>
             </li>
           </ul>
         </nav>

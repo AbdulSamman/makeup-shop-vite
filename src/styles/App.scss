@@ -316,7 +316,7 @@ div.App {
   }
 
   #hamburger-menu {
-    position: fixed;
+    position: absolute;
     top: 40px;
     right: 20px;
     width: 40px;
@@ -369,8 +369,11 @@ div.App {
 
   #hamburger-menu a {
     color: #eee;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
   }
 
   #hamburger-menu a:hover {
