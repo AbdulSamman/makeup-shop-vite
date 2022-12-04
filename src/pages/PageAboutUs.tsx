@@ -4,7 +4,7 @@ export const PageAboutUs = () => {
     <div className="pageAboutUs">
       <section className="first">
         <div className="text">
-          <h4>About us</h4>
+          <h4>ABOUT US</h4>
           <p>
             Our products are created from the combination of natural Ingredients
             with the Good Vibes philosophy.
@@ -29,7 +29,7 @@ export const PageAboutUs = () => {
           <img src="/images/aboutUs2.jpg" />
         </div>
         <div className="text">
-          <h4>What we do</h4>
+          <h4>WHAT WE DO</h4>
           <p>
             Your well-being is what interests us most.
             <br /> we want to be by your side to give you a daily dose of good

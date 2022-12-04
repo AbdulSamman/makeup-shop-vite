@@ -28,6 +28,9 @@
         }
         h4 {
             font-weight: bold;
+            &::first-letter {
+                font-size: 2.1rem;
+            }
         }
     }
     .second {

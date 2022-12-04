@@ -24,6 +24,9 @@ export const Products = () => {
                       src={product.api_featured_image}
                       className="productImg"
                     />
+                    <span className="brandName">
+                      {product.brand.toUpperCase()}
+                    </span>
                   </div>
                 </NavLink>
                 <p>{product.name}</p>
@@ -35,10 +38,14 @@ export const Products = () => {
                 <button className="cartPlusBtn">
                   <BsFillCartPlusFill
                     className="cartPlus"
-                    onClick={addToCart}
+                    onClick={() => addToCart(product)}
                   />
                 </button>
-                <span className="price">{product.price} €</span>
+                {product.price > 0.0 ? (
+                  <span className="price">{product.price} €</span>
+                ) : (
+                  <span className="price sold">SOLD</span>
+                )}
               </div>
             );
           })}

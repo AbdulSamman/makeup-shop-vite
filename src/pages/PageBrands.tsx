@@ -33,6 +33,7 @@ export const PageBrands = () => {
             </div>
           )}
         </DropdownButton>
+
         <Products />
       </div>
     </div>

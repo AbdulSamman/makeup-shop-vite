@@ -22,6 +22,7 @@ export const AppProvider: React.FC<any> = ({ children }) => {
   const [brands, setBrands] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [cart, setCart] = useState<any>({ items: [] });
+  const [colors, setColors] = useState<any[]>([]);
 
   const loadBrands = (_products: any[]) => {
     const _brands: string[] = [];
@@ -38,7 +39,7 @@ export const AppProvider: React.FC<any> = ({ children }) => {
     (async () => {
       const _products = (await axios.get(url)).data;
       _products.forEach((product: any) => {
-        product.amount = 0;
+        product.amount = 1;
       });
 
       console.log(_products);
@@ -47,16 +48,25 @@ export const AppProvider: React.FC<any> = ({ children }) => {
     })();
   }, []);
 
+  useEffect(() => {
+    filteredProducts.filter((color: any) => {
+      setColors(color.product_colors);
+    });
+  }, [filteredProducts]);
+
   const handleAmountMinus = (product: any) => {
     product.amount--;
-    if (product.amount < 0) {
-      product.amount = 0;
+    if (product.amount < 1) {
+      product.amount = 1;
     }
     setProducts([...products]);
   };
 
   const handleAmountPlus = (product: any) => {
     product.amount++;
+    if (product.amount > 32) {
+      product.amount = 32;
+    }
     setProducts([...products]);
   };
 
@@ -69,7 +79,15 @@ export const AppProvider: React.FC<any> = ({ children }) => {
   };
 
   const addToCart = (product: any) => {
-    cart.items.push(product);
+    if (
+      !cart.items.includes(product) &&
+      product.id !== undefined &&
+      product.price > 0.0
+    ) {
+      cart.items.push(product);
+    }
+    console.log(product.id);
+
     setCart({ ...cart });
   };
 
@@ -86,6 +104,7 @@ export const AppProvider: React.FC<any> = ({ children }) => {
         handleAmountMinus,
         handleAmountPlus,
         handleDropDownChoice,
+        colors,
       }}
     >
       {children}

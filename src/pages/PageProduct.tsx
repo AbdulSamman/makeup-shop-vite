@@ -4,9 +4,10 @@ import { useContext } from "react";
 import { AppContext } from "../AppContext";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { RiArrowGoBackFill } from "react-icons/ri";
+
 export const PageProduct = () => {
   const navigate = useNavigate();
-  const { products, handleAmountMinus, handleAmountPlus, addToCart } =
+  const { products, handleAmountMinus, handleAmountPlus, addToCart, colors } =
     useContext(AppContext);
   const { id } = useParams();
 
@@ -23,7 +24,17 @@ export const PageProduct = () => {
             <div>
               <img src={product.api_featured_image} className="productImg" />
             </div>
-
+            <div className="productColors">
+              {colors.map((color: any, i: number) => {
+                return (
+                  <div
+                    key={i}
+                    style={{ backgroundColor: `${color.hex_value}` }}
+                    className="productColor"
+                  ></div>
+                );
+              })}
+            </div>
             <div className="buttons">
               <button onClick={() => handleAmountMinus(product)}>-</button>
               {product.amount}

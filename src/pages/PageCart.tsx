@@ -1,27 +1,37 @@
 import { useContext } from "react";
 import { AppContext } from "../AppContext";
-import "../styles/components/products.scss";
-export const PageCart = () => {
-  const { cart, handleAmountMinus, handleAmountPlus } = useContext(AppContext);
-  return (
-    <div>
-      {cart.items.map((product: any) => {
-        return (
-          <div className="product">
-            <div>
-              <img src={product.image_link} className="productImg" />
-            </div>
-            <p>{product.name}</p>
-            <div className="buttons">
-              <button onClick={() => handleAmountMinus(product)}>-</button>
-              {product.amount}
-              <button onClick={() => handleAmountPlus(product)}>+</button>
-            </div>
+import "../styles/pages/pageCart.scss";
 
-            <span>{product.price} €</span>
-          </div>
-        );
-      })}
+export const PageCart = () => {
+  const { cart } = useContext(AppContext);
+
+  return (
+    <div className="pageCart">
+      <div className="products">
+        {cart.items.map((product: any, i: number) => {
+          return (
+            <div className="product" key={i}>
+              <div>
+                <img src={product.api_featured_image} className="productImg" />
+              </div>
+              <div className="cartBill">
+                <span className="name">{product.name}</span>
+
+                <span>
+                  {product.amount}x: {product.price} €
+                </span>
+                <span>{(product.amount * product.price).toFixed(2)} €</span>
+              </div>
+            </div>
+          );
+        })}
+        <div className="total">
+          <span>TOTAL</span>
+
+          <span>00.00 €</span>
+        </div>
+        <button className="btn btn-primary">BUY</button>
+      </div>
     </div>
   );
 };
