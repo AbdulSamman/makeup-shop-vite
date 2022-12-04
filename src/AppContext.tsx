@@ -42,7 +42,6 @@ export const AppProvider: React.FC<any> = ({ children }) => {
         product.amount = 1;
       });
 
-      console.log(_products);
       loadBrands(_products);
       setProducts(_products);
     })();
@@ -86,7 +85,6 @@ export const AppProvider: React.FC<any> = ({ children }) => {
     ) {
       cart.items.push(product);
     }
-    console.log(product.id);
 
     setCart({ ...cart });
   };
