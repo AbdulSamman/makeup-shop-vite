@@ -46,7 +46,10 @@ export const PageProduct = () => {
             <p>{product.description}</p>
             <div className="priceCart">
               <button className="cartPlusBtn">
-                <BsFillCartPlusFill className="cartPlus" onClick={addToCart} />
+                <BsFillCartPlusFill
+                  className="cartPlus"
+                  onClick={() => addToCart()}
+                />
               </button>
 
               <span className="price">{product.price} €</span>
