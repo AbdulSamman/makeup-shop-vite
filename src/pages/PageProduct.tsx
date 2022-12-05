@@ -7,7 +7,7 @@ import { RiArrowGoBackFill } from "react-icons/ri";
 
 export const PageProduct = () => {
   const navigate = useNavigate();
-  const { products, handleAmountMinus, handleAmountPlus, addToCart, colors } =
+  const { products, handleAmountMinus, handleAmountPlus, addToCart } =
     useContext(AppContext);
   const { id } = useParams();
 
@@ -25,7 +25,7 @@ export const PageProduct = () => {
               <img src={product.api_featured_image} className="productImg" />
             </div>
             <div className="productColors">
-              {colors.map((color: any, i: number) => {
+              {product.product_colors.map((color: any, i: number) => {
                 return (
                   <div
                     key={i}

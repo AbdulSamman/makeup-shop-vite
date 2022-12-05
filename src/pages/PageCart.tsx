@@ -1,9 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../AppContext";
 import "../styles/pages/pageCart.scss";
 
 export const PageCart = () => {
   const { cart } = useContext(AppContext);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  console.log(cart.items);
+
+  const totalPrices = (items: any) => {
+    let prices: any[] = [];
+    items.forEach((item: any) => {
+      prices.push(parseFloat(item.price) * item.amount);
+    });
+
+    return prices.reduce((total: number, price: number) => total + price, 0);
+  };
+  useEffect(() => {
+    const items = cart.items;
+    setTotalPrice(totalPrices(items));
+  }, [cart]);
 
   return (
     <div className="pageCart">
@@ -28,7 +43,7 @@ export const PageCart = () => {
         <div className="total">
           <span>TOTAL</span>
 
-          <span>00.00 €</span>
+          <span>{totalPrice.toFixed(2)} €</span>
         </div>
         <button className="btn btn-primary">BUY</button>
       </div>

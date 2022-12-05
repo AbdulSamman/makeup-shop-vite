@@ -5,9 +5,8 @@ export const PageStart = () => {
     <div className="pageStart">
       <h2>GET MAKEUP AND GO</h2>
       <p>
-        GENIALER EFFEKT JEDES MAL Entdecken Sie ein phänomenales Volumen, fühlen
-        Sie sich einzigartig und bekommen Sie einen umwerfenden Blick, den Sie
-        so noch nie hatten, dank der Produkte von Lashcode!
+        GENIAL EFFECT EVERY TIME Discover phenomenal volume, feel unique and get
+        a stunning look you've never had before thanks to Lashcode products!
       </p>
       <div className="images">
         {images.map((image, i) => {

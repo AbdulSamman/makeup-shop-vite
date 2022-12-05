@@ -22,7 +22,6 @@ export const AppProvider: React.FC<any> = ({ children }) => {
   const [brands, setBrands] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [cart, setCart] = useState<any>({ items: [] });
-  const [colors, setColors] = useState<any[]>([]);
 
   const loadBrands = (_products: any[]) => {
     const _brands: string[] = [];
@@ -41,17 +40,12 @@ export const AppProvider: React.FC<any> = ({ children }) => {
       _products.forEach((product: any) => {
         product.amount = 1;
       });
+      console.log(_products);
 
       loadBrands(_products);
       setProducts(_products);
     })();
   }, []);
-
-  useEffect(() => {
-    filteredProducts.filter((color: any) => {
-      setColors(color.product_colors);
-    });
-  }, [filteredProducts]);
 
   const handleAmountMinus = (product: any) => {
     product.amount--;
@@ -102,7 +96,6 @@ export const AppProvider: React.FC<any> = ({ children }) => {
         handleAmountMinus,
         handleAmountPlus,
         handleDropDownChoice,
-        colors,
       }}
     >
       {children}

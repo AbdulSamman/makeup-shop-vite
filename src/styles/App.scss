@@ -32,7 +32,7 @@ div.App {
         aspect-ratio: 1;
         border-radius: 100%;
         border: 1px solid #eee;
-        animation: rolling 3s 1s linear infinite alternate;
+        animation: logoScale 3s 1s linear infinite alternate;
         &:hover {
           background-color: #eee;
           -webkit-animation-play-state: paused;
@@ -100,7 +100,7 @@ div.App {
     align-items: center;
     padding-bottom: 1rem;
     h2 {
-      margin-top: 2rem;
+      margin-top: 1rem;
       font-size: 3rem;
       font-family: "Indie Flower", cursive;
       font-weight: bold;
@@ -317,15 +317,16 @@ div.App {
 
   #hamburger-menu {
     position: absolute;
-    top: 40px;
+    top: 25px;
     right: 20px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     display: none;
     border: none;
     padding: 0px;
     margin: 0px;
     font-family: "Cabin", Sans-serif;
+
     background: linear-gradient(
       to bottom,
       #333,
@@ -390,7 +391,7 @@ div.App {
   }
   //ende burgermenu
 
-  @keyframes rolling {
+  @keyframes logoScale {
     from {
       transform: scale(0.5);
     }
@@ -414,6 +415,15 @@ div.App {
   }
 
   @media (max-width: 867px) {
+    header {
+      a {
+        img {
+          width: 60px;
+          aspect-ratio: 1;
+        }
+      }
+    }
+
     //burger menu
     #main-menu :not(:last-of-type) {
       display: none;
@@ -431,6 +441,9 @@ div.App {
     }
     .pageStart {
       text-align: center;
+      h2 {
+        font-size: 1.5rem;
+      }
     }
     nav {
       justify-content: space-evenly;
