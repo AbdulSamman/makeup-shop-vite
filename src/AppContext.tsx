@@ -40,7 +40,6 @@ export const AppProvider: React.FC<any> = ({ children }) => {
       _products.forEach((product: any) => {
         product.amount = 1;
       });
-      console.log(_products);
 
       loadBrands(_products);
       setProducts(_products);

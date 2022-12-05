@@ -5,7 +5,6 @@ import "../styles/pages/pageCart.scss";
 export const PageCart = () => {
   const { cart } = useContext(AppContext);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  console.log(cart.items);
 
   const totalPrices = (items: any) => {
     let prices: any[] = [];
