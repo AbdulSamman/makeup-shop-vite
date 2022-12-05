@@ -23,7 +23,7 @@ export const ControlledCarousel = () => {
 
         <Carousel.Caption>
           <h3>New collections</h3>
-          <p>New collections New collections</p>
+          <p>Cotton 100%</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

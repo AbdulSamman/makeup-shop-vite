@@ -50,6 +50,14 @@
         }
     }
     @media (max-width: 767px) {
+        .carousel-item {
+            h3 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1.5rem;
+            }
+        }
         .arrow {
             left: 80%;
         }
