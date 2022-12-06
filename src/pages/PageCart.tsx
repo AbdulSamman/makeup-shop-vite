@@ -3,6 +3,7 @@ import { AppContext } from "../AppContext";
 import "../styles/pages/pageCart.scss";
 
 export const PageCart = () => {
+  const shippingCoast = 3.99;
   const { cart } = useContext(AppContext);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
@@ -25,24 +26,41 @@ export const PageCart = () => {
         {cart.items.map((product: any, i: number) => {
           return (
             <div className="product" key={i}>
-              <div>
-                <img src={product.api_featured_image} className="productImg" />
+              <div className="productImg">
+                <img src={product.api_featured_image} />
               </div>
               <div className="cartBill">
-                <span className="name">{product.name}</span>
-
-                <span>
-                  {product.amount}x: {product.price} €
-                </span>
-                <span>{(product.amount * product.price).toFixed(2)} €</span>
+                <p className="name">{product.name}</p>
+                <div className="prices">
+                  <span>
+                    {product.amount}x: {product.price} €
+                  </span>
+                  <span>{(product.amount * product.price).toFixed(2)} €</span>
+                </div>
               </div>
             </div>
           );
         })}
         <div className="total">
-          <span>TOTAL</span>
-
-          <span>{totalPrice.toFixed(2)} €</span>
+          <span id="total">TOTAL</span>
+          {totalPrice < 49 ? (
+            <div>
+              <span>Shipping: {shippingCoast} €</span>
+              <span>free shipping from 49 euro</span>
+            </div>
+          ) : (
+            <div>
+              <span>
+                <del>Shipping: {shippingCoast} €</del>
+              </span>
+              <span>free shipping from 49 euro</span>
+            </div>
+          )}
+          {totalPrice > 49 ? (
+            <span>{totalPrice.toFixed(2)} €</span>
+          ) : (
+            <span>{(shippingCoast + totalPrice).toFixed(2)} €</span>
+          )}
         </div>
         <button className="btn btn-primary">BUY</button>
       </div>
