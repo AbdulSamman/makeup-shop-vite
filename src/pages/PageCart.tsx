@@ -57,7 +57,11 @@ export const PageCart = () => {
             </div>
           )}
           {totalPrice > 49 ? (
-            <span>{totalPrice.toFixed(2)} €</span>
+            <span>
+              {" "}
+              <span>Free Shipping: </span>
+              {totalPrice.toFixed(2)} €
+            </span>
           ) : (
             <span>{(shippingCoast + totalPrice).toFixed(2)} €</span>
           )}
